@@ -13,26 +13,29 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    // Get All Todos
+
+    // GET Method (READ)
     @RequestMapping("/getTodos")
     public List<Todo> getAll() {
         return todoService.getAllTodos();
     }
 
-    // Get Todo by ID
-//    @RequestMapping("/get/{id}")
-//    public Todo getTodoBYID(@PathVariable int id) {
-//        return todoService.getTodoBYID(id);
-//    }
-
-    // POST Method
+    // POST Method (CREATE)
     @RequestMapping(method = RequestMethod.POST, value = "/createTodo")
-
-    // Dont return anything JUST CREATE new todo
     public void create(@RequestBody Todo todo) {
         todoService.createTodo(todo);
     }
 
+    // PUT Method (UPDATE)
+    @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
+    public void update(@PathVariable Integer id, @RequestBody Todo todo) {
+        todoService.updateTodo(todo, id);
+    }
 
+    // DELETE Method (DELETE)
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
+    public void delete(@PathVariable Integer id, @RequestBody Todo todo) {
+        todoService.deleteTodo(todo, id);
+    }
 
 }

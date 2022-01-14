@@ -3,7 +3,7 @@ package todo;
 
 public class Todo {
 
-    int ID;
+    Integer ID;
     String Desc;
 
     // Empty Constructor
@@ -11,13 +11,13 @@ public class Todo {
     }
 
     // Parameters Constructor
-    public Todo(int ID, String desc) {
+    public Todo(Integer ID, String desc) {
         this.ID = ID;
         Desc = desc;
     }
 
     // Getters & Setters
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 

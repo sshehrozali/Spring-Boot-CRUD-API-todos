@@ -19,17 +19,35 @@ public class TodoService {
             )
     );
 
-    // Return all TODOs
+    // READ
     public List<Todo> getAllTodos() {
         return todos;
     }
 
-    // Return TODO BY ID
-//    public Todo getTodoBYID(int TODOid) {
-//        return todos.stream().filter(t -> t.getID().eqauls(TODOid)).findFirst().get();
-//    }
-
+    // CREATE
     public void createTodo(Todo todo) {
         todos.add(todo);    // Adding User passed todo Object into todos
+    }
+
+    // UPDATE
+    public void updateTodo(Todo todo, Integer id) {
+
+        for (int i = 0; i < todos.size(); i++) {
+            Todo t = todos.get(i);  // Get an object from DB
+
+            // Check if that todo is present or not
+            if (t.getID().equals(id)) {
+                // IF present, then Update the Todo
+                System.out.println("Todo Updated");
+                todos.set(i, todo);
+            }
+        }
+    }
+
+    // DELETE
+    public void deleteTodo(Todo todo, Integer id) {
+        // Remove the todo if Id is matched
+        todos.removeIf(t -> t.getID().equals(id));
+        System.out.println("Todo Deleted");
     }
 }
