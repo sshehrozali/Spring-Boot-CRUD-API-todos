@@ -23,4 +23,13 @@ public class TodoService {
     public List<Todo> getAllTodos() {
         return todos;
     }
+
+    // Return TODO BY ID
+//    public Todo getTodoBYID(int TODOid) {
+//        return todos.stream().filter(t -> t.getID().eqauls(TODOid)).findFirst().get();
+//    }
+
+    public void createTodo(Todo todo) {
+        todos.add(todo);    // Adding User passed todo Object into todos
+    }
 }
